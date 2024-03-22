@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        BombaCombustivel bomba = new BombaCombustivel();
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nEscolha a operação:\n1 - Abastecer por valor\n2 - Abastecer por litro\n3 - Ver total abastecido de todos os combustíveis\n4 - Sair");
+
+            int escolha = scanner.nextInt();
+
+            switch (escolha) {
+                case 1:
+                    System.out.println("Escolha o tipo de combustível:");
+                    System.out.println("1 - Gasolina Comum\n2 - Gasolina Aditivada\n3 - Álcool\n4 - Diesel");
+                    int tipoAbastecimentoValor = scanner.nextInt();
+                    String tipoAbastecimentoValorString = null;
+                    switch (tipoAbastecimentoValor) {
+                        case 1:
+                            tipoAbastecimentoValorString = "Gasolina Comum";
+                            break;
+                        case 2:
+                            tipoAbastecimentoValorString = "Gasolina Aditivada";
+                            break;
+                        case 3:
+                            tipoAbastecimentoValorString = "Álcool";
+                            break;
+                        case 4:
+                            tipoAbastecimentoValorString = "Diesel";
+                            break;
+                        default:
+                            System.out.println("Opção inválida, tente novamente.");
+                            continue;
+                    }
+                    System.out.println("Digite o valor a ser abastecido:");
+                    double valorAbastecido = scanner.nextDouble();
+                    double litrosAbastecidosValor = bomba.abastecerPorValor(tipoAbastecimentoValorString, valorAbastecido);
+                    System.out.println("Foram abastecidos " + litrosAbastecidosValor + " litros de combustível.");
+                    break;
+                case 2:
+                    System.out.println("Escolha o tipo de combustível:");
+                    System.out.println("1 - Gasolina Comum\n2 - Gasolina Aditivada\n3 - Álcool\n4 - Diesel");
+                    int tipoAbastecimentoLitro = scanner.nextInt();
+                    String tipoAbastecimentoLitroString = null;
+                    switch (tipoAbastecimentoLitro) {
+                        case 1:
+                            tipoAbastecimentoLitroString = "Gasolina Comum";
+                            break;
+                        case 2:
+                            tipoAbastecimentoLitroString = "Gasolina Aditivada";
+                            break;
+                        case 3:
+                            tipoAbastecimentoLitroString = "Álcool";
+                            break;
+                        case 4:
+                            tipoAbastecimentoLitroString = "Diesel";
+                            break;
+                        default:
+                            System.out.println("Opção inválida, tente novamente.");
+                            continue;
+                    }
+                    System.out.println("Digite a quantidade de litros a ser abastecida:");
+                    double litros = scanner.nextDouble();
+                    double valorPago = bomba.abastecerPorLitro(tipoAbastecimentoLitroString, litros);
+                    System.out.println("Valor a ser pago: R$" + valorPago);
+                    break;
+                case 3:
+                    System.out.println("Total abastecido de todos os combustíveis: R$" + bomba.getTotalAbastecido());
+                    break;
+                case 4:
+                    System.out.println("Encerrando o programa...");
+                    System.exit(0);
+                default:
+                    System.out.println("Opção inválida, tente novamente.");
+            }
+        }
+    }
+}
